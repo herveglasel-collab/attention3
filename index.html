@@ -1,1 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Attention3 – Alerte / Bruit / Capture</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Bandeau contrôles (examinateur) -->
+  <div id="panel">
+    <div class="row">
+      <div class="title">Attention3</div>
+      <div id="status">Prêt</div>
+      <div id="timer">00.0s</div>
+    </div>
+
+    <div class="row">
+      <label class="lab">
+        <span>Mode</span>
+        <select id="modeSelect">
+          <option value="A">Bloc A – Alerte (pré-consigne)</option>
+          <option value="B">Bloc B – Bruit de fond (SNR)</option>
+          <option value="C">Bloc C – Capture (post-consigne)</option>
+          <option value="FULL" selected>Full : A → B → C</option>
+        </select>
+      </label>
+
+      <label class="lab">
+        <span>Durée par bloc</span>
+        <select id="blockDurationSelect">
+          <option value="60000">1 min</option>
+          <option value="120000">2 min</option>
+          <option value="150000" selected>2 min 30</option>
+          <option value="180000">3 min</option>
+        </select>
+      </label>
+
+      <button id="startBtn">Démarrer</button>
+      <button id="downloadBtn" disabled>Télécharger CSV</button>
+      <button id="resetBtn">Réinitialiser</button>
+    </div>
+
+    <div class="row small">
+      <div class="hint">
+        Les trois mécanismes sont testés <b>séparément</b> (pas de superposition) :
+        Alerte (pré) / Bruit de fond / Capture (post fenêtre décisionnelle).
+      </div>
+    </div>
+  </div>
+
+  <div id="app">
+    <!-- Fond (image fixe) -->
+    <img id="bgImg" src="media/classroom_bg.png" alt="classe" />
+
+    <div id="shade"></div>
+
+    <!-- Bulle consigne -->
+    <div id="cueBubble" aria-live="polite">
+      <div id="cueLabel">Appuie sur + quand j'ai dit PLUS, et sur − quand j'ai dit MOINS.</div>
+      <div id="cueSub">Réglages en haut, puis Démarrer.</div>
+    </div>
+
+    <!-- Réponses -->
+    <div id="buttons">
+      <button id="btnPlus" class="resp">+</button>
+      <button id="btnMinus" class="resp">−</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
