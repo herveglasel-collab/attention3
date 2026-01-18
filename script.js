@@ -190,7 +190,7 @@ function pickCue(){
 
 function decideTrialPlan(){
   if(state.currentBlock==="A"){
-    if(Math.random()<0.5) return {cond:"A0"};
+    if(Math.random()<0.75) return {cond:"A0"};
     const high=Math.random()<0.5;
     return {cond:high?"A2":"A1", alert:true, gain:high?CONFIG.toneGainHigh:CONFIG.toneGainLow};
   }
